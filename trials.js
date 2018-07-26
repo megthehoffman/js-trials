@@ -49,17 +49,64 @@ function printPhoneNums(phoneNumbers) {
 
 // Create an empty map of transactions
 
+const transactions = new Map();
+
 
 // Add function to add transactions
+
+function addTransaction(date, deltaFunds) {
+	transactions.set(date, deltaFunds);
+}
 
 
 // Use the function to add transactions
 
+addTransaction('May-2',-500);
+addTransaction('May-13',1200);
+addTransaction('May-15',-100);
+addTransaction('May-21',-359);
+addTransaction('May-29',2200);
+
 
 // Add function to show balance status
-
+function showBalanceStatus(balance) {
+	console.log('Current balance:', balance);
+	if (balance < 0) {
+		console.log('YOU ARE OVERDRAWN :C');
+	}
+	else if (balance > 0 && balance < 20) {
+		console.log('Warning, you are close to zero balance :0');
+	}
+	else {
+		console.log('Thank you for your business :)');
+	}
+}
 
 // Add function to show transactions
+function showTransactions(transactions, balance) {
+	let transactType = 'None';
+	let currentBalance = balance;
+
+	console.log('Start balance:', balance);
+
+	for (let transaction of transactions) {
+		if (transaction < 0) {
+			transactType = 'WITHDRAWAL';
+		}
+		else {
+			transactType = 'DEPOSIT';
+		}
+		currentBalance = currentBalance - transaction[1];
+ 		console.log(transaction[0],transactType,transaction[1],currentBalance);
+	}
+
+	if (currentBalance < 0) {
+		currentBalance -= 25;
+		console.log('Oops. Your balance is below zero. You are being charged.');
+	}
+
+	console.log('Your final balance is:', currentBalance);
+}
 
 
 // ///////////////////////////////////////////////////////
