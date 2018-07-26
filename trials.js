@@ -114,6 +114,15 @@ function showTransactions(transactions, balance) {
 
 // Make an object with customer info
 
+const customer = {
+	'Account Holder': accountHolder,
+	'Account Number': accountNumber,
+	'Business Name': businessName,
+	'Addresses': addresses,
+	'Phone Numbers': phoneNumbers,
+	'Transactions': transactions,
+	'Starting Balance': 26000
+};
 
 // Function to add customer attributes
 
